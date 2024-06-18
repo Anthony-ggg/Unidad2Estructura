@@ -1,0 +1,95 @@
+{% extends "template.html" %}
+{% block content %}
+<script>
+    $(document).ready(function() {
+        $("#link").click(function() {
+           create();
+            
+        });
+    });
+
+    function tabla (url) {
+        $.ajax({
+            method: "GET",
+            url: url,    
+            contentType:'json',
+            success: function(data){
+                //console.log(data);
+                if(data.code =='200'){
+                    var html = '';
+                        $.each(data.data, function(i, info){
+                            console.log(info);
+                            html += '<tr>';
+                            html += "<td>" +i+ "</td>";
+                            html += "<td>" + info.apellidos + "" + info.nombres + "</td>";
+                            html += "<td>" + info.dni + "</td>"
+                            html += '<td><a href="/personas/editar/'+info.id+'" class="btn btn-info">Modificar</a></td>';
+                            html += '<td><form action="/personas/eliminar" method="post"><input type="hidden" name="id" value="'+info.id+'"><button type="submit" class="btn btn-danger">Eliminar</button></form></td>';
+                            html += '</tr>';
+                        });
+                    
+                    $("#tabla tbody").html(html);
+                    
+                }
+           }
+        });
+    }
+    function create(){
+        var aux = $("#tipo").prop("checked");
+        var select = $("#criterio").find(":selected").val();
+        var method = $("#metodo").find(":selected").val();
+        if(aux)
+            tabla ("http://localhost:5000/personas/1/"+select+'/'+method);
+        else
+            tabla ("http://localhost:5000/personas/2/"+select+'/'+method);
+    }
+</script>
+
+<h2 class="text-white">Lista de personas</h2>
+<div class="booking-form-body">
+    <a href="/personas/ver" class="btn btn-danger">AGREGAR</a>
+    <div class="row">
+        <select id="metodo">
+            <option selected>Metodo de ordenamiento</option>
+            <option value="1">MERGESORT</option>
+            <option value="2">QUICK_SORT</option>
+            <option value="3">SHELL_SORT</option>
+        </select>
+        <select id="criterio">
+            <option selected>Metodo de busqueda</option>
+            <option value="_apellidos">ASCENDENTE</option>
+            <option value="_nombres">DECENDENTE</option>
+        </select>
+            <select id="criterio">
+                <option selected>Busqueda por</option>
+                <option value="_apellidos">APELLIDOS</option>
+                <option value="_nombres">NOMBRES</option>
+            </select>
+            <button= class="btn btn-info"  id="link" >ORDENAR</button>
+    </div>
+    <table id="tabla" class="table text-white">
+        <thead>
+            <th>Nro</th>
+            <th>Boys</th>
+            <th>dni</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            {% for item in lista %}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.apellidos}} {{item.nombres}}</td>
+                <td>{{item.dni}}</td>
+                <td><a href="/personas/editar/{{item.id}}" class="btn btn-info">Modificar</a></td>
+                <td>
+                    <form action="/personas/eliminar" method="post">
+                        <input type="hidden" name="id" value="{{item.id}}">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

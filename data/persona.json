@@ -1,0 +1,182 @@
+[
+  {
+    "id": 6,
+    "apellidos": "Martinez",
+    "nombres": "Maria",
+    "direccion": "Quito",
+    "dni": "23456789",
+    "telefono": "0987654321",
+    "tipo": "CEDULA"
+  },
+  {
+    "id": 7,
+    "apellidos": "Lopez",
+    "nombres": "Juan",
+    "direccion": "Guayaquil",
+    "dni": "34567890",
+    "telefono": "0998765432",
+    "tipo": "CEDULA"
+  },
+  {
+    "id": 8,
+    "apellidos": "Gomez",
+    "nombres": "Pedro",
+    "direccion": "Cuenca",
+    "dni": "45678901",
+    "telefono": "0976543210",
+    "tipo": "CEDULA"
+  },
+  {
+    "id": 9,
+    "apellidos": "Rodriguez",
+    "nombres": "Ana",
+    "direccion": "Manta",
+    "dni": "56789012",
+    "telefono": "0965432109",
+    "tipo": "CEDULA"
+  },
+  {
+    "id": 10,
+    "apellidos": "Perez",
+    "nombres": "Luis",
+    "direccion": "Ambato",
+    "dni": "67890123",
+    "telefono": "0954321098",
+    "tipo": "CEDULA"
+  },
+  {
+    "id": 11,
+    "apellidos": "Hernandez",
+    "nombres": "Carlos",
+    "direccion": "Guayaquil",
+    "dni": "78901234",
+    "telefono": "0943210987",
+    "tipo": "CEDULA"
+  },
+  {
+    "id": 12,
+    "apellidos": "Flores",
+    "nombres": "Elena",
+    "direccion": "Loja",
+    "dni": "89012345",
+    "telefono": "0932109876",
+    "tipo": "CEDULA"
+  },
+  {
+    "id": 13,
+    "apellidos": "Sanchez",
+    "nombres": "Jorge",
+    "direccion": "Quito",
+    "dni": "90123456",
+    "telefono": "0921098765",
+    "tipo": "CEDULA"
+  },
+  {
+    "id": 14,
+    "apellidos": "Ramirez",
+    "nombres": "Marcela",
+    "direccion": "Cuenca",
+    "dni": "01234567",
+    "telefono": "0910987654",
+    "tipo": "CEDULA"
+  },
+  {
+    "id": 15,
+    "apellidos": "Torres",
+    "nombres": "Roberto",
+    "direccion": "Ambato",
+    "dni": "12345678",
+    "telefono": "0909876543",
+    "tipo": "CEDULA"
+  },
+  {
+    "id": 16,
+    "apellidos": "Garcia",
+    "nombres": "Laura",
+    "direccion": "Manta",
+    "dni": "23456789",
+    "telefono": "0898765432",
+    "tipo": "CEDULA"
+  },
+  {
+    "id": 17,
+    "apellidos": "Martinez",
+    "nombres": "Diego",
+    "direccion": "Loja",
+    "dni": "34567890",
+    "telefono": "0887654321",
+    "tipo": "CEDULA"
+  },
+  {
+    "id": 18,
+    "apellidos": "Lopez",
+    "nombres": "Sofia",
+    "direccion": "Quito",
+    "dni": "45678901",
+    "telefono": "0876543210",
+    "tipo": "CEDULA"
+  },
+  {
+    "id": 19,
+    "apellidos": "Herrera",
+    "nombres": "Fernando",
+    "direccion": "Guayaquil",
+    "dni": "56789012",
+    "telefono": "0865432109",
+    "tipo": "CEDULA"
+  },
+  {
+    "id": 20,
+    "apellidos": "Gomez",
+    "nombres": "Maria",
+    "direccion": "Cuenca",
+    "dni": "67890123",
+    "telefono": "0854321098",
+    "tipo": "CEDULA"
+  },
+  {
+    "id": 21,
+    "apellidos": "Suarez",
+    "nombres": "Andres",
+    "direccion": "Quito",
+    "dni": "78901234",
+    "telefono": "0843210987",
+    "tipo": "CEDULA"
+  },
+  {
+    "id": 22,
+    "apellidos": "Gonzalez",
+    "nombres": "Camila",
+    "direccion": "Manta",
+    "dni": "89012345",
+    "telefono": "0832109876",
+    "tipo": "CEDULA"
+  },
+  {
+    "id": 23,
+    "apellidos": "Diaz",
+    "nombres": "Martin",
+    "direccion": "Loja",
+    "dni": "90123456",
+    "telefono": "0821098765",
+    "tipo": "CEDULA"
+  },
+  {
+    "id": 25,
+    "apellidos": "Molina",
+    "nombres": "Lucas",
+    "direccion": "Cuenca",
+    "dni": "12345678",
+    "telefono": "0809876543",
+    "tipo": "CEDULA"
+  },
+  {
+    "id": 20,
+    "apellidos": "Espejo",
+    "nombres": "Melissa",
+    "direccion": "9200 Cattail Run",
+    "dni": "11123123",
+    "telefono": "19547030329",
+    "tipo": "CEDULA"
+  }
+]

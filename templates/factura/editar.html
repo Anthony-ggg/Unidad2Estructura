@@ -1,0 +1,91 @@
+{% extends "template.html" %}
+{% block content %}
+<h2 class="text-white">Editar Factura</h2>
+<div class="booking-form-body">
+    <a href="/facturas" class="btn btn-danger">VOLVER</a>
+    <form id="form" class="custom-form booking-form" action="/factura/editar/{{ f_en.id }}" method="post" role="form">
+        <div class="booking-form-body">
+            <div class="row">
+                <input type="hidden" name="pos" value="{{pos}}">
+                <input type="hidden" name="id" value="{{f_en.id}}">
+                <div class="col-lg-6 col-12">
+                    <label style="color:white">RUC</label>
+                    <input type="text" name="ruc" class="form-control" value="{{f_en.ruc}}" placeholder="RUC" required>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <label style="color:white">Fecha</label>
+                    <input type="date" name="fecha" class="form-control" value="{{f_en.fecha}}" required>
+                </div>
+
+                <div class="col-lg-12 col-12">
+                    <label style="color:white">Persona</label>
+                    <select name="persona" class="form-control" required>
+                        {% for persona in lista %}
+                            <option value="{{ persona.id }}" {% if persona.id == f_en.persona.id %} selected {% endif %}>
+                                {{ persona.apellidos }} {{ persona.nombres }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-lg-6 col-12">
+                    <label style="color:white">Tipo Identificación</label>
+                    <select id="tipo_identificacion" name="tipo_identificacion" class="form-control" required>
+                        {% for tipo in tipos_identificacion %}
+                            <option value="{{ tipo}}" {% if tipo == f_en.persona.tipo %} selected {% endif %}> {{ tipo}} </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-lg-6 col-12">
+                    <label style="color:white">Subtotal</label>
+                    <input type="text" id="subtotal" name="subtotal" value="{{f_en.subtotal}}" class="form-control" placeholder="Subtotal" required>
+                </div>
+
+                <div class="col-lg-6 col-12">
+                    <label style="color:white">Retención</label>
+                    <input type="text" id="retencion" name="retencion" value="{{f_en.retencion}}" class="form-control" placeholder="Retención" required readonly>
+                </div>
+
+                <div class="col-lg-6 col-12">
+                    <label style="color:white">Precio</label>
+                    <input type="text" id="precio" name="precio" value="{{f_en.precio}}" class="form-control" placeholder="Precio" required readonly>
+                </div>
+
+                <div class="col-lg-4 col-md-10 col-8 mx-auto mt-2">
+                    <button id="boton" type="submit" class="form-control btn btn-success">Editar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const tipoIdentificacionSelect = document.getElementById('tipo_identificacion');
+        const subtotalInput = document.getElementById('subtotal');
+        const retencionInput = document.getElementById('retencion');
+        const precioInput = document.getElementById('precio');
+
+        function calcularRetencionYPrecio() {
+            const tipoIdentificacion = tipoIdentificacionSelect.value;
+            const subtotal = parseFloat(subtotalInput.value) || 0;
+
+            let retencion = 0;
+            if (tipoIdentificacion === 'EDUCATIVO') {
+                retencion = subtotal * 0.08;
+            } else {
+                retencion = subtotal * 0.10;
+            }
+
+            const precio = subtotal - retencion;
+
+            retencionInput.value = retencion.toFixed(2);
+            precioInput.value = precio.toFixed(2);
+        }
+
+        tipoIdentificacionSelect.addEventListener('change', calcularRetencionYPrecio);
+        subtotalInput.addEventListener('input', calcularRetencionYPrecio);
+    });
+</script>
+{% endblock %}

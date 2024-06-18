@@ -1,0 +1,127 @@
+{% extends "template.html" %}
+{% block content %}
+<script>
+    $(document).ready(function() {
+        $("#link").click(function() {
+           create();
+            
+        });
+
+    $("#search").keyup(function() {
+        search(); 
+    
+    });
+
+    });
+    function search(){
+        var aux = $("#tipo").prop("checked");
+        var select = $("#criterio").find(":selected").val();
+        var method = $("#metodo").find(":selected").val();
+        var search = $("#search").val();
+        if(aux)
+            tabla ("http://localhost:5000/facturas/1/"+select+'/'+method+'/'+search);
+        else
+            tabla ("http://localhost:5000/facturas/2/"+select+'/'+method+'/'+search);
+    }
+    function create(){
+        var aux = $("#tipo").prop("checked");
+        var select = $("#criterio").find(":selected").val();
+        var method = $("#metodo").find(":selected").val();
+        if(aux)
+            tabla ("http://localhost:5000/facturas/1/"+select+'/'+method);
+        else
+            tabla ("http://localhost:5000/facturas/2/"+select+'/'+method);
+    }
+
+
+    function tabla (url) {
+        $.ajax({
+            method: "GET",
+            url: url,    
+            contentType:'json',
+            success: function(data){
+                //console.log(data);
+                if(data.code =='200'){
+                    var html = '';
+                        $.each(data.data, function(i, info){
+                            console.log(info);
+                            html += '<tr>';
+                            html += "<td>" +i+ "</td>";
+                            html += "<td>" + info.persona.apellidos + "" + info.persona.nombres + "</td>";
+                            html += "<td>" + info.fecha + "</td>"
+                            html += "<td>" + info.ruc + "</td>"
+                            html += "<td>" + info.subtotal + "</td>"
+                            html += "<td>" + info.precio + "</td>"
+                            html += "<td>" + info.retencion + "</td>"
+                            html += "<td>" + info.tipo + "</td>"
+                            html += '<td><a href="/factura/editar/'+info.id+'" class="btn btn-info">Modificar</a></td>';
+                        });
+                    
+                    $("#tabla tbody").html(html);
+                    
+                }
+           }
+        });
+    }
+    function create(){
+        var aux = $("#tipo").prop("checked");
+        var select = $("#criterio").find(":selected").val();
+        var method = $("#metodo").find(":selected").val();
+        if(aux)
+            tabla ("http://localhost:5000/facturas/1/"+select+'/'+method);
+        else
+            tabla ("http://localhost:5000/facturas/2/"+select+'/'+method);
+    }
+</script>
+
+<h2 class="text-white">Lista de facturas</h2>
+<div class="booking-form-body">
+    <a href="/factura/guardar" class="btn btn-outline-danger">AGREGAR</a>
+    <div class="row">
+        <select id="metodo">
+            <option selected>Metodo de Busqueda</option>
+            <option value="1">SECUENCIAL</option>
+            <option value="3">SECUENCIAL BINARIO</option>
+        </select>
+        <select id="criterio">
+            <option value="_apellidos">ASCENDENTE</option>
+            <option value="_nombres">DECENDENTE</option>
+        </select>
+
+            <select id="criterio">
+                <option value="_apellidos">APELLIDOS</option>
+                <option value="_nombres">NOMBRES</option>
+            </select>
+            <button= class="btn btn-info"  id="link" >ORDENAR</button>
+    </div>
+    <table id="tabla" class="table text-white">
+        <thead>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Fecha</th>
+            <th>RUC</th>
+            <th>Sub total</th>
+            <th>Precio</th>
+            <th>Retención</th>
+            <th>Tipo Identificación</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            {% for item in lista %}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.persona.apellidos}} {{item.persona.nombres}}</td>
+                <td>{{item.fecha}}</td>
+                <td>{{item.ruc}}</td>
+                <td>{{item.subtotal}}</td>
+                <td>{{item.precio}}</td>
+                <td>{{item.retencion}}</td>
+                <td>{{item.tipo}}</td>
+                <td><a href="/factura/editar/{{item.id}}" class="btn btn-info">Modificar</a></td>
+                <td><a href="/factura/eliminar/{{item.id}}" class="btn btn-danger">Eliminar</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>UNL</title>
+
+        <!-- CSS FILES -->                
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,400;0,600;0,700;1,200;1,700&display=swap" rel="stylesheet">
+            
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+
+        <link href="{{ url_for('static', filename='css/bootstrap-icons.css')}}" rel="stylesheet">
+
+        <link href="{{ url_for('static', filename='css/vegas.min.css')}}" rel="stylesheet">
+
+        <link href="{{ url_for('static', filename='css/tooplate-barista.css')}}" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        
+<!--
+
+Tooplate 2137 Barista
+
+https://www.tooplate.com/view/2137-barista-cafe
+
+Bootstrap 5 HTML CSS Template
+
+-->
+    </head>
+    
+    <body class="reservation-page">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="/facturas">
+                    <img src="{{ url_for('static', filename='images/coffee-beans') }}" class="navbar-brand-image img-fluid" alt="">
+                    PracticaFactura
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/personas">Persona</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/facturas">Factura</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <main>
+            <section class="booking-section section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-14 mx-auto">
+                            <div class="booking-form-wrap">
+                                <div class="row">
+                                    {% block content %}{% endblock %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    </body>
+    </html>
+
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.sticky.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/vegas.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/custom.js')}}"></script>
+
+    </body>
+</html>
